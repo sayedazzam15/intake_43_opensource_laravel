@@ -14,15 +14,19 @@
 </head>
 
 <body>
+    <a href="{{ route('product.create') }}">create product</a>
+
     <table>
         <thead>
             <tr>
+                <th>id</th>
                 <th>name</th>
                 <th>price</th>
                 <th>description</th>
                 <th>quantity</th>
                 <th>category_id</th>
                 <th>created_at</th>
+                <th>...</th>
             </tr>
         </thead>
         <tbody>
@@ -44,20 +48,34 @@
             {{-- how to use model to fetch data from database --}}
             {{-- how to display model data into view table --}}
             {{-- blade directives --}}
+            {{-- display all resource --}}
+            {{-- show single resource --}}
+            {{-- update resource --}}
+            {{-- delete resource --}}
             @foreach ($products as $product)
                 <tr class="@if ($loop->first) active @endif">
+                    <td>{{ $product->id }}</td>
                     <td>{{ $product->name }}</td>
                     <td>{{ $product->price }}</td>
                     <td>{{ $product->description }}</td>
                     <td>{{ $product->quantity }}</td>
                     <td>{{ $product->category_id }}</td>
                     <td>{{ $product->created_at }}</td>
+                    <td>
+                        <a href="{{ route('product.show', $product->id) }}">show</a>
+                        <form action="{{ route('product.update', $product->id) }}">
+                            <button>update</button>
+                        </form>
+                        <form action="{{ route('product.destroy', $product->id) }}" method="POST">
+                            @method('DELETE')
+                            @csrf()
+                            <button type="submit">delete</button>
+                        </form>
+                    </td>
                 </tr>
-                @dump($loop)
             @endforeach
         </tbody>
     </table>
-
 </body>
 
 </html>

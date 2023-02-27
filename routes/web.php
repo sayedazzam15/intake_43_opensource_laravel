@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\ProductController;
 use Illuminate\Support\Facades\Route;
 
@@ -23,4 +24,28 @@ Route::get('/', function () {
 });
 
 
-Route::get('/product', [ProductController::class, 'getProducts']);
+Route::get('/product', [ProductController::class, 'index'])->name('product.index');
+
+Route::get('/product/show/{product}', [ProductController::class, 'show'])->name('product.show');
+
+// get show details
+// post create data
+// delete delete data
+// put to update data
+
+Route::delete('/product/delete/{id}', [ProductController::class, 'destroy'])->name('product.destroy');
+
+
+Route::get('/product/update/{id}', [ProductController::class, 'update'])->name('product.update');
+
+Route::put('/product/edit/{id}', [ProductController::class, 'edit'])->name('product.edit');
+
+
+Route::get('/product/create', [ProductController::class, 'create'])->name('product.create');
+Route::post('/product/store', [ProductController::class, 'store'])->name('product.store');
+
+
+
+
+// resource
+Route::resource('category', CategoryController::class);
