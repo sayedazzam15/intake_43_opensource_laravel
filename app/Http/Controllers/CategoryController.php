@@ -13,6 +13,8 @@ class CategoryController extends Controller
     public function index()
     {
         //
+        $categories = Category::get();
+        return view('category.index', compact('categories'));
     }
 
     /**
@@ -37,7 +39,7 @@ class CategoryController extends Controller
     public function show(Category $category)
     {
         //
-        return view('',)
+        return view('category.show', compact('category'));
     }
 
     /**

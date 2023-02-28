@@ -24,7 +24,7 @@
                 <th>price</th>
                 <th>description</th>
                 <th>quantity</th>
-                <th>category_id</th>
+                <th>category name</th>
                 <th>created_at</th>
                 <th>...</th>
             </tr>
@@ -59,7 +59,7 @@
                     <td>{{ $product->price }}</td>
                     <td>{{ $product->description }}</td>
                     <td>{{ $product->quantity }}</td>
-                    <td>{{ $product->category_id }}</td>
+                    <td>{{ $product->category->name }}</td>
                     <td>{{ $product->created_at }}</td>
                     <td>
                         <a href="{{ route('product.show', $product->id) }}">show</a>
