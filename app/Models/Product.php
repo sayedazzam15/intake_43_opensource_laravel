@@ -11,6 +11,8 @@ class Product extends Model
     // protected $table = 'my_products';
     protected $guarded = [];
     public $timestamps = false;
+    protected $perPage = 5;
+
     // protected $primaryKey = 'product_id';
     function category()
     {

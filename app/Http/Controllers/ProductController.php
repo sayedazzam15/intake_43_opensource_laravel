@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Product;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Ramsey\Uuid\Type\Integer;
 
 class ProductController extends Controller
@@ -17,7 +18,8 @@ class ProductController extends Controller
         // products
         // product
         // select products from database
-        $products = Product::get();
+        $products = Product::with('category')->paginate();
+
         // dump and die
         // dd($products);
         // display products in view table

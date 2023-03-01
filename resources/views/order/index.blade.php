@@ -30,7 +30,7 @@
                     <td>{{ $order->user->name }}</td>
                     <td>{{ $order->price }}</td>
                     <td>
-                        {{-- <a class="btn btn-primary" href="{{ route('category.show', $category->id) }}">show</a> --}}
+                        <a class="btn btn-primary" href="{{ route('order.show', $order->id) }}">show</a>
                         {{-- <form action="{{ route('product.update', $product->id) }}">
                             <button>update</button>
                         </form>

@@ -25,9 +25,15 @@ Route::get('/', function () {
 });
 
 
-Route::get('/product', [ProductController::class, 'index'])->name('product.index');
 
+
+
+
+Route::get('/product', [ProductController::class, 'index'])->name('product.index');
 Route::get('/product/show/{product}', [ProductController::class, 'show'])->name('product.show');
+
+
+
 
 // get show details
 // post create data
@@ -45,7 +51,10 @@ Route::put('/product/edit/{id}', [ProductController::class, 'edit'])->name('prod
 Route::get('/product/create', [ProductController::class, 'create'])->name('product.create');
 Route::post('/product/store', [ProductController::class, 'store'])->name('product.store');
 
-
+// middlware
 // resource
 Route::resource('category', CategoryController::class);
-Route::get('/order', [OrderController::class, 'index'])->name('order.index');
+Route::get('/order', [OrderController::class, 'index'])->name('order.index')->middleware('auth');
+Route::get('/order/{order}', [OrderController::class, 'show'])->name('order.show');
+Auth::routes();
+Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');

@@ -6,11 +6,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Document</title>
-    <style>
-        .active {
-            background: gray;
-        }
-    </style>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
+
 </head>
 
 <body>
@@ -59,7 +57,7 @@
                     <td>{{ $product->price }}</td>
                     <td>{{ $product->description }}</td>
                     <td>{{ $product->quantity }}</td>
-                    <td>{{ $product->category->name }}</td>
+                    {{-- <td>{{ $product->category->name }}</td> --}}
                     <td>{{ $product->created_at }}</td>
                     <td>
                         <a href="{{ route('product.show', $product->id) }}">show</a>
@@ -76,6 +74,7 @@
             @endforeach
         </tbody>
     </table>
+    {{ $products->links() }}
 </body>
 
 </html>
