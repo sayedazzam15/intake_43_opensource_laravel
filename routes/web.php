@@ -29,9 +29,8 @@ Route::get('/', function () {
 
 
 
-Route::get('/product', [ProductController::class, 'index'])->name('product.index');
+Route::get('/product', [ProductController::class, 'index'])->name('product.index')->middleware('isadmin');
 Route::get('/product/show/{product}', [ProductController::class, 'show'])->name('product.show');
-
 
 
 
@@ -54,7 +53,7 @@ Route::post('/product/store', [ProductController::class, 'store'])->name('produc
 // middlware
 // resource
 Route::resource('category', CategoryController::class);
-Route::get('/order', [OrderController::class, 'index'])->name('order.index')->middleware('auth');
+Route::get('/order', [OrderController::class, 'index'])->name('order.index');
 Route::get('/order/{order}', [OrderController::class, 'show'])->name('order.show');
 Auth::routes();
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');

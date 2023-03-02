@@ -11,48 +11,18 @@
 </head>
 
 <body>
-
+    <x-test-component>
+        <h1>Adipisicing aute laboris pariatur non enim amet incididunt.</h1>
+    </x-test-component>
 
     <div class="row justify-between">
         <form class="col-6" action="{{ route('product.store') }}" method="POST">
             @csrf
-            <div>
-                <label class="form-label" for="name">name</label>
-                <input class="form-control" type="text" name="name">
-                @error('name')
-                    <div class="alert alert-danger">{{ $message }}</div>
-                @enderror
-            </div>
-            <div>
-
-                <label class="form-label" for="price">price</label>
-
-                <input class="form-control" type="text" name="price">
-                @error('price')
-                    <div class="alert alert-danger">{{ $message }}</div>
-                @enderror
-            </div>
-            <div>
-                <label class="form-label" for="description">description</label>
-                <input class="form-control" type="text" name="description">
-                @error('description')
-                    <div class="alert alert-danger">{{ $message }}</div>
-                @enderror
-            </div>
-            <div>
-                <label class="form-label" for="category_id">category_id</label>
-                <input class="form-control" type="text" name="category_id">
-                @error('category_id')
-                    <div class="alert alert-danger">{{ $message }}</div>
-                @enderror
-            </div>
-            <div>
-                <label class="form-label" for="quantity">quantity</label>
-                <input class="form-control" type="text" name="quantity">
-                @error('quantity')
-                    <div class="alert alert-danger">{{ $message }}</div>
-                @enderror
-            </div>
+            @foreach ($inputs as $input)
+                <div>
+                    <x-bootstrap-input :label="$input['inputLabel']" :inputName="$input['inputName']" />
+                </div>
+            @endforeach
             <input class="btn btn-primary" type="submit">
         </form>
     </div>

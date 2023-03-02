@@ -15,8 +15,9 @@ class IsAdminMiddleware
      */
     public function handle(Request $request, Closure $next): Response
     {
-
-        dd('sayed safwet');
+        if($request->method() == "POST"){
+            abort(503);
+        }
         return $next($request);
     }
 }

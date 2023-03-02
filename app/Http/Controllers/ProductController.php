@@ -47,10 +47,10 @@ class ProductController extends Controller
         $product->update($request->except(['_method', '_token']));
         return redirect()->route('product.index');
     }
-
     function create()
     {
-        return view('product.create');
+        $inputs = $this->formInput();
+        return view('product.create', compact('inputs'));
     }
     function store(Request $request)
     {
@@ -64,5 +64,30 @@ class ProductController extends Controller
 
         Product::create($request->all());
         return redirect()->route('product.index');
+    }
+    function formInput()
+    {
+        return [
+            [
+                'inputName' => 'name',
+                'inputLabel' => 'username'
+            ],
+            [
+                'inputName' => 'price',
+                'inputLabel' => 'userprice'
+            ],
+            [
+                'inputName' => 'description',
+                'inputLabel' => 'userdescription'
+            ],
+            [
+                'inputName' => 'category_id',
+                'inputLabel' => 'usercategory_id'
+            ],
+            [
+                'inputName' => 'quantity',
+                'inputLabel' => 'userquantity'
+            ],
+        ];
     }
 }
